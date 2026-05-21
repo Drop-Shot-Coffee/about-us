@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Drop Shot Coffee, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F4F1EA;
+    --bone-deep: #E8E3D7;
+    --ink: #14201A;
+    --court: #1F4D3A;
+    --court-bright: #2E7355;
+    --accent: #D9532B;
+    --rule: rgba(20, 32, 26, 0.18);
+    --muted: rgba(20, 32, 26, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(46, 115, 85, 0.08), transparent 40%),
+      radial-gradient(circle at 88% 88%, rgba(217, 83, 43, 0.06), transparent 35%);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 72px 80px;
+  }
+
+  /* Hero image */
+  .hero-image {
+    position: relative;
+    margin: 0 -72px 64px;
+    height: 460px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78) contrast(1.05) saturate(0.92);
+    transform: scale(1.02);
+    transition: transform 8s ease;
+  }
+
+  .hero-image:hover img {
+    transform: scale(1.06);
+  }
+
+  .hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20, 32, 26, 0.1) 0%, rgba(20, 32, 26, 0.35) 70%, var(--bone) 100%),
+      radial-gradient(circle at 20% 30%, rgba(31, 77, 58, 0.25), transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-image .caption {
+    position: absolute;
+    bottom: 28px;
+    left: 32px;
+    color: var(--bone);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    z-index: 2;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-image .caption::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* Secondary image band */
+  .court-band {
+    margin: 88px -72px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    background: var(--ink);
+  }
+
+  .court-band img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) saturate(0.85);
+  }
+
+  .court-band::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(31, 77, 58, 0.35) 0%, transparent 50%, rgba(20, 32, 26, 0.45) 100%);
+  }
+
+  .court-band .pull-quote {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0 48px;
+  }
+
+  .court-band .pull-quote p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.3;
+    color: var(--bone);
+    text-align: center;
+    max-width: 22ch;
+    letter-spacing: -0.005em;
+  }
+
+  .court-band .pull-quote p em {
+    font-style: normal;
+    color: #F4C99A;
+  }
+
+  /* Header bar */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 72px;
+  }
+
+  .mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--court);
+  }
+
+  .mark .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 9px;
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+
+  .meta {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Hero / eyebrow */
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--court);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--court);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 6.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 40px;
+    max-width: 14ch;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--court);
+  }
+
+  .lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 36em;
+    margin-bottom: 88px;
+    letter-spacing: -0.005em;
+  }
+
+  /* Two-column section */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    padding: 56px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .grid h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--court);
+    padding-top: 6px;
+  }
+
+  .grid p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 38em;
+  }
+
+  .grid p + p {
+    margin-top: 18px;
+  }
+
+  /* Pillars */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 22px;
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
+  }
+
+  .pillar {
+    padding-right: 18px;
+    position: relative;
+  }
+
+  .pillar:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: 4px;
+    top: 22px;
+    color: var(--court-bright);
+    font-size: 14px;
+    opacity: 0.5;
+  }
+
+  .pillar .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .pillar .name {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .pillar .desc {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  /* Launch banner */
+  .launch {
+    margin-top: 80px;
+    background: var(--ink);
+    color: var(--bone);
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .launch::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(244, 241, 234, 0.12);
+    border-radius: 50%;
+  }
+
+  .launch::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(244, 241, 234, 0.08);
+    border-radius: 50%;
+  }
+
+  .launch .label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .launch h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .launch h3 em {
+    font-style: italic;
+    color: var(--court-bright);
+  }
+
+  .launch .year {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--bone);
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Corporate footer block */
+  .corporate {
+    margin-top: 72px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .corporate dt {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .corporate dd {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  .footnote {
+    margin-top: 56px;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 56em;
+  }
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    .page { padding: 32px 24px 56px; }
+    .hero-image { margin: 0 -24px 40px; height: 320px; }
+    .hero-image .caption { left: 20px; bottom: 20px; font-size: 12px; }
+    .court-band { margin: 56px -24px; height: 240px; }
+    .court-band .pull-quote p { font-size: 22px; }
+    .topbar { margin-bottom: 32px; }
+    h1 { font-size: 44px; max-width: none; }
+    .lede { font-size: 19px; margin-bottom: 56px; }
+    .grid { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
+    .pillars { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+    .pillar:not(:last-child)::after { display: none; }
+    .launch { grid-template-columns: 1fr; padding: 32px 28px; }
+    .launch .year { font-size: 56px; }
+    .corporate { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+
+  /* Subtle entrance */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .topbar, h1, .eyebrow, .lede, .grid, .launch, .corporate {
+    animation: rise 0.7s ease-out both;
+  }
+  .eyebrow { animation-delay: 0.05s; }
+  h1 { animation-delay: 0.12s; }
+  .lede { animation-delay: 0.22s; }
+  .grid:nth-of-type(1) { animation-delay: 0.32s; }
+  .grid:nth-of-type(2) { animation-delay: 0.38s; }
+  .grid:nth-of-type(3) { animation-delay: 0.44s; }
+  .launch { animation-delay: 0.5s; }
+  .corporate { animation-delay: 0.56s; }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="topbar">
+    <div class="mark"><span class="dot"></span>DROP SHOT COFFEE, INC.</div>
+    <div class="meta">About</div>
+  </header>
+
+  <figure class="hero-image">
+    <img src="images/coffee-hero.jpg" alt="Specialty coffee being poured" />
+    <figcaption class="caption">The cup, made with intention.</figcaption>
+  </figure>
+
+  <div class="eyebrow">A premium beverage company</div>
+
+  <h1>Where the <em>game</em> meets the cup.</h1>
+
+  <p class="lede">
+    Drop Shot Coffee is building a premium beverage brand designed for the
+    fastest-growing category in social athletics — pickleball and the wider world
+    of court sports. We exist at the intersection of community, hospitality, and
+    high-performance leisure.
+  </p>
+
+  <!-- Mission -->
+  <section class="grid">
+    <h2>Mission</h2>
+    <div>
+      <p>
+        To become the signature beverage of social court sports — a brand players
+        recognize on the sideline, gather around between games, and associate with
+        the culture they're helping create.
+      </p>
+      <p>
+        We craft coffee, tea, and functional drinks for athletes who play for the
+        love of the game and the people they play with. The product is premium;
+        the experience is communal; the standard is consistent across every venue
+        we serve.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ambition -->
+  <section class="grid">
+    <h2>Ambition</h2>
+    <div>
+      <p>
+        Pickleball is our entry point. Court sports — padel, tennis, racquetball,
+        and the social formats emerging around them — are the larger field. We
+        are building Drop Shot Coffee to be the category-defining beverage brand
+        for that field, starting in California and scaling to wherever the game
+        is played.
+      </p>
+      <p>
+        Our model unites five pillars that, taken together, build a category no
+        single coffee brand or venue operator has built before.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <div class="name">Venues</div>
+          <div class="desc">Partnerships with premier clubs and courts.</div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <div class="name">Events</div>
+          <div class="desc">Tournaments and recurring micro-gatherings.</div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <div class="name">App</div>
+          <div class="desc">A coordination and rewards layer for the community.</div>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <div class="name">Ambassadors</div>
+          <div class="desc">Players who carry the brand into their circles.</div>
+        </div>
+        <div class="pillar">
+          <div class="num">05</div>
+          <div class="name">Carts</div>
+          <div class="desc">Court-side service points where the cup is served.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Standard -->
+  <section class="grid">
+    <h2>Standard</h2>
+    <div>
+      <p>
+        We hold ourselves to the standard of the venues we serve. Specialty-grade
+        sourcing. Branded presentation. Trained service. Drop Shot is not a coffee
+        cart with a logo — it is a hospitality experience built specifically for
+        the rhythm of competitive play and the audience that surrounds it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Court band -->
+  <div class="court-band">
+    <img src="images/pickleball-net-sunset.jpg" alt="Pickleball at the net at sunset" />
+    <div class="pull-quote">
+      <p>Built for the <em>game</em>. Built for the <em>community</em> around it.</p>
+    </div>
+  </div>
+
+  <!-- Launch banner -->
+  <aside class="launch">
+    <div>
+      <div class="label">Launch posture</div>
+      <h3>Operationally ready. <em>Launching 2026.</em></h3>
+    </div>
+    <div class="year">2026</div>
+  </aside>
+
+  <!-- Corporate identifiers -->
+  <dl class="corporate">
+    <div>
+      <dt>Entity</dt>
+      <dd>Drop Shot Coffee, Inc.</dd>
+    </div>
+    <div>
+      <dt>Structure</dt>
+      <dd>Delaware C Corporation</dd>
+    </div>
+    <div>
+      <dt>Operations</dt>
+      <dd>California, United States</dd>
+    </div>
+    <div>
+      <dt>Status</dt>
+      <dd>Pre-launch · 2026</dd>
+    </div>
+  </dl>
+
+  <p class="footnote">
+    Drop Shot Coffee, Inc. is an incorporated Delaware C Corporation operating in
+    California. The company is currently in its pre-launch phase, with venue
+    partnerships, founding team, and operational infrastructure in place ahead of
+    its 2026 market entry.
+  </p>
+
+</main>
+</body>
+</html>
